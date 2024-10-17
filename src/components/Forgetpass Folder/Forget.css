@@ -1,0 +1,135 @@
+/* Container for the forgot password page */
+.forgot-password-container {
+    display: flex;
+    height: 100vh;
+}
+/* Left side - Form container */
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #010D17;
+    color: white;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+     max-width: 90%; 
+}
+
+.forgetpass {
+    font-size: 2.5rem;
+    align-self: center; /* Align with input fields */
+    width: 100%; /* Match the input width */
+    padding-left: 16rem; /* Add space to match input padding */
+    margin: 0;
+  }
+  .text-forgetpass{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+/* Input styles */
+input {
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+input:focus-visible {
+    border-color: #34c3ff;
+    box-shadow: 0 0 5px rgba(52, 195, 255, 0.6);
+}
+
+input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Button styles */
+button {
+    background-color: #4C77A7;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #06468a;
+}
+
+/* Back to login link styling */
+.back-to-login {
+    margin-top: 1rem;
+}
+
+.back-to-login a {
+    color: #4C77A7;
+    text-decoration: none;
+}
+
+.back-to-login a:hover {
+    text-decoration: underline;
+}
+
+/* Right side - Background image section */
+.image-container {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Welcome text styling */
+.welcome-text {
+    font-size: 4rem;
+    margin-bottom: -1rem;
+    text-align: center;
+    color: #eeeeee;
+    padding-top: 2rem;
+}
+
+/* Nitro Tech text styling */
+.nitro-tech-text {
+    font-size: 2.5rem;
+    margin: 1px 0;
+    text-align: center;
+    color: #eeeeee;
+}
+input, button {
+    box-sizing: border-box; /* Ensures consistent padding and width */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 1rem;
+        width: 90%;
+    }
+    .welcome-text {
+        font-size: 2rem;
+    }
+
+    .nitro-tech-text {
+        font-size: 1.5rem;
+    }
+}
+

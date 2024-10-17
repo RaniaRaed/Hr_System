@@ -1,0 +1,157 @@
+/* Login.css */
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+.log-in-h {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    align-self: flex-start; /* Align with input fields */
+    width: 100%; /* Match the input width */
+    padding-left: 6rem; /* Add space to match input padding */
+}
+/* Left side - Login form */
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem;
+    background-color: #010D17;
+    color: white; /* Set text color to white */
+    border-radius: 1px;
+    max-width: 800px; /* Limit the width */
+}
+
+
+/* Input styles */
+input {
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%; /* Full width for input */
+    margin: 10px 0; /* Space between inputs */
+    transition: border 0.3s; /* Smooth border transition */
+
+}
+
+/* Login.css */
+
+.text-aligned {
+  align-self: center; /* Align with input fields */
+  width: 100%; /* Match the input width */
+  padding-left: 12rem; /* Add space to match input padding */
+  margin: 0;
+}
+
+/* Button styles */
+button {
+    background-color: #4C77A7; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded button */
+    padding: 10px; /* Same padding as input */
+    width: 100%; /* Full width for button */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin: 10px 0; /* Space above and below */
+    width: 100%; /* Same size as input */
+}
+/* Input container for centering text */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    width: 100%; /* Full width */
+}
+
+input:focus {
+    border-color: #0269d8; /* Highlight on focus */
+    outline: none; /* Remove default outline */
+}
+
+input::placeholder {
+    color: #aaa; /* Lighter color for placeholder */
+    font-style: italic; /* Italic style */
+}
+
+button:hover {
+    background-color: #06468a; /* Darker shade on hover */
+}
+
+.image-container {
+    flex: 1;
+    position: relative;
+    background-size: cover; /* Ensures the image covers the container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Avoid tiling the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+   /* Add spacing around elements */
+    gap: 0.5rem; /* Add space between elements */
+    color: white; /* Set text color to white */
+}
+/* Sub-text styling */
+.sub-text {
+    font-size: 0.9rem; /* Smaller size for the subtext */
+    margin-bottom: 2.5rem;
+    text-align: center;
+    color: #eeeeeeee; /* Full width to match inputs */
+    margin: 1rem; 
+}
+
+.center-img {
+    width: 55rem;   /* Specified width */
+    height: 30rem;  /* Specified height */
+    object-fit: scale-down;
+    padding-bottom: 1;
+    margin-bottom: 0.5rem; /* Add space above the image */
+}
+
+.welcome-text {
+    font-size: 4rem; /* Large font size for "Welcome to" */
+    margin-bottom: -2rem; /* Spacing */
+    text-align: center; /* Center alignment */
+    color: #eeeeeeee; /* Text color */
+    padding-top: 0rem;
+}
+
+.nitro-tech-text {
+    font-size: 3rem; /* Smaller size for "Nitro Tech" */
+    margin: 1px 0; /* Smaller margin for less space */
+    text-align: center; /* Center alignment */
+    color: #e5e4e4ee; /* Text color */
+}
+
+.go-to-forgetpass a {
+    padding-left: 0.5rem;
+    color: #eeeeeeee;
+    text-decoration: none;
+}
+
+.go-to-forgetpass a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .image-container {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .welcome-text {
+        font-size: 2.5rem; /* Scale down text size */
+    }
+
+    .nitro-tech-text {
+        font-size: 1.8rem; /* Adjust text size */
+    }
+
+    .center-img {
+        width: 100%; /* Make image responsive */
+        max-width: 25rem;
+    }
+}
