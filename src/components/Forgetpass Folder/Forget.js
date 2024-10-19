@@ -1,69 +1,79 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Forget.css'; // Ensure the CSS path is correct
-import BackgroundImage from '../img/Login.png'; // Adjusted path
-import CenterImage from '../img/image.png'; // Add your centered image here
+import React, { useState } from 'react'; // Import necessary React hooks
+import { Link } from 'react-router-dom'; // Import Link for client-side routing
+import './Forget.css'; // Ensure correct path to your CSS
+import BackgroundImage from '../img/Login.png'; // Background image path
+import CenterImage from '../img/login-img.png'; // Centered image path
 
+// Component for "Forgot Password" functionality
 const Forgetpass = () => {
-  const [email, setEmail] = useState(''); // State for email
+  // useState hook to manage the email input field's state
+  const [email, setEmail] = useState(''); 
 
+  // Function to handle password reset form submission
   const handlePasswordReset = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); // Prevent page reload on form submit
 
     try {
+      // Sending a POST request to the backend for password reset
       const response = await fetch('http://localhost:5000/reset-password', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // Indicate JSON format
         },
-        body: JSON.stringify({ email }), // Send the email
+        body: JSON.stringify({ email }), // Send the email entered by the user
       });
 
-      const data = await response.json();
+      const data = await response.json(); // Parse the response JSON
 
+      // Check if the request was successful
       if (response.ok) {
-        alert('Password reset link sent to your email!'); // Notify user of success
+        alert('Password reset link sent to your email!'); // Notify user
       } else {
-        alert(`Error: ${data.message}`); // Handle errors
+        alert(`Error: ${data.message}`); // Handle server-side errors
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send reset link. Please try again.');
+      console.error('Error:', error); // Log errors to the console for debugging
+      alert('Failed to send reset link. Please try again.'); // Show error message
     }
   };
 
   return (
     <div className="forgot-password-container">
-      <div className="form-container">
+      {/* Form Container */}
+      <div className="forgetpass-form-container">
         <h2 className="forgetpass">Forgot Password?</h2>
-        <p className="text-forgetpass">
+        <p className="forgetpass-text">
           Don’t worry! It happens. Please enter the <br />
           email associated with your account.
         </p>
-        <form onSubmit={handlePasswordReset}> {/* Attach handlePasswordReset to form submission */}
+        
+        {/* Form to collect user email and trigger password reset */}
+        <form onSubmit={handlePasswordReset}> {/* Attach the submit handler */}
           <input
             type="email"
-            placeholder="Enter your email"
-            aria-label="Email Address"
-            value={email} // Bind state to input
-            onChange={(e) => setEmail(e.target.value)} // Update state on change
-            required
+            placeholder="Enter your email" // Input placeholder text
+            aria-label="Email Address" // Accessibility label
+            value={email} // Bind state to the input field
+            onChange={(e) => setEmail(e.target.value)} // Update state on input change
+            required // Make field mandatory
           />
-          <button type="submit">Send Reset Link</button>
+          <button type="submit">Send Reset Link</button> {/* Submit button */}
         </form>
-        <p className="back-to-login">
+
+        {/* Link back to the login page */}
+        <p className="forgetpass-back-to-login">
           <Link to="/login">Back to Login</Link>
         </p>
       </div>
 
-      {/* Background Image Section */}
-      <div className="image-container" style={{ backgroundImage: `url(${BackgroundImage})` }}>
-        <p className="welcome-text">Welcome to</p>
-        <p className="nitro-tech-text">Nitro Tech</p>
-        <img src={CenterImage} alt="Centered Logo" className="center-img" />
+      {/* Right section with background image and logo */}
+      <div className="forgetpass-image-container" style={{ backgroundImage: `url(${BackgroundImage})` }}>
+        <p className="forgetpass-welcome-text">Welcome to</p> {/* Welcome message */}
+        <p className="forgetpass-nitro-tech-text ">Nitro Tech</p> {/* Company/brand name */}
+        <img src={CenterImage} alt="Centered Logo" className="forgetpass-center-img" /> {/* Logo */}
       </div>
     </div>
   );
 };
 
-export default Forgetpass;
+export default Forgetpass; // Export the component to use it elsewhere

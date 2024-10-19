@@ -1,157 +1,147 @@
-/* Login.css */
+/* Main container for the login page */
 .login-container {
-    display: flex;
-    height: 100vh;
+    display: flex; /* Flexbox for side-by-side layout */
+    height: 100vh; /* Full screen height */
 }
+
+/* Heading for the login form */
 .log-in-h {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    align-self: flex-start; /* Align with input fields */
-    width: 100%; /* Match the input width */
-    padding-left: 6rem; /* Add space to match input padding */
+    font-size: 3rem; /* Large font size for the heading */
+    margin-bottom: 1rem; /* Space below the heading */
+    width: 100%; /* Match input width */
+    padding-left: 1rem; /* Adjust horizontal spacing */
+    color: white;
 }
-/* Left side - Login form */
-.form-container {
-    flex: 1;
+
+/* Left side - Login form container */
+.form-login-container {
+    flex: 1; /* Take half the screen width */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8rem;
-    background-color: #010D17;
-    color: white; /* Set text color to white */
-    border-radius: 1px;
-    max-width: 800px; /* Limit the width */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Align items in the center */
+    padding: 7rem; /* Uniform padding for consistency */
+    background-color: #010D17; /* Dark background color */
+    color: white; /* White text for better contrast */
+    border-radius: 2px; /* Slight rounding of corners */
+    max-width: 400px; /* Limit form width */
 }
 
-
-/* Input styles */
+/* Input field styles */
 input {
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 25px; /* Rounded input fields */
+    padding: 10px; /* Space inside inputs */
     width: 100%; /* Full width for input */
-    margin: 10px 0; /* Space between inputs */
-    transition: border 0.3s; /* Smooth border transition */
-
+    margin: 10px 0; /* Space between fields */
+    transition: border 0.3s; /* Smooth border color transition */
 }
 
-/* Login.css */
-
-.text-aligned {
-  align-self: center; /* Align with input fields */
-  width: 100%; /* Match the input width */
-  padding-left: 12rem; /* Add space to match input padding */
-  margin: 0;
+/* Align text within the form */
+.login-text-aligned {
+    align-self: center; /* Align with input fields */
+    width: 100%; /* Full width matching inputs */
+    padding-left: 2rem; /* Adjust horizontal spacing */
+    margin: 0; /* Remove default margin */
 }
 
-/* Button styles */
+/* Button styling */
 button {
-    background-color: #4C77A7; /* Primary color */
-    color: white; /* Text color */
+    background-color: #4C77A7; /* Primary button color */
+    color: white; /* Button text color */
     border: none; /* No border */
     border-radius: 25px; /* Rounded button */
-    padding: 10px; /* Same padding as input */
-    width: 100%; /* Full width for button */
-    cursor: pointer; /* Pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition */
+    padding: 10px; /* Padding inside button */
+    width: 100%; /* Full width matching inputs */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth hover transition */
     margin: 10px 0; /* Space above and below */
-    width: 100%; /* Same size as input */
-}
-/* Input container for centering text */
-.input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align items */
-    width: 100%; /* Full width */
 }
 
+/* Highlight inputs on focus */
 input:focus {
-    border-color: #0269d8; /* Highlight on focus */
+    border-color: #0269d8; /* Blue border on focus */
     outline: none; /* Remove default outline */
 }
 
+/* Placeholder text styling */
 input::placeholder {
-    color: #aaa; /* Lighter color for placeholder */
-    font-style: italic; /* Italic style */
+    color: #aaa; /* Light gray placeholder text */
+    font-style: italic; /* Italicized for distinction */
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #06468a; /* Darker shade on hover */
 }
 
-.image-container {
-    flex: 1;
-    position: relative;
-    background-size: cover; /* Ensures the image covers the container */
+/* Image container for the right side */
+.login-image-container {
+    flex: 1; /* Take equal space with the form container */
+    position: relative; /* Allows for absolute positioning inside */
+    background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Avoid tiling the image */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center elements vertically */
-    align-items: center; /* Center elements horizontally */
-   /* Add spacing around elements */
-    gap: 0.5rem; /* Add space between elements */
-    color: white; /* Set text color to white */
-}
-/* Sub-text styling */
-.sub-text {
-    font-size: 0.9rem; /* Smaller size for the subtext */
-    margin-bottom: 2.5rem;
-    text-align: center;
-    color: #eeeeeeee; /* Full width to match inputs */
-    margin: 1rem; 
+    display: flex; /* Enable flexible layout */
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    color: white; /* White text for contrast */
 }
 
-.center-img {
-    width: 55rem;   /* Specified width */
-    height: 30rem;  /* Specified height */
-    object-fit: scale-down;
-    padding-bottom: 1;
-    margin-bottom: 0.5rem; /* Add space above the image */
+/* Centered image in the right section */
+.login-center-img {
+    width: 55rem; /* Fixed width */
+    height: 30rem; /* Fixed height */
+    object-fit: scale-down; /* Keep aspect ratio within bounds */
+    margin-bottom: 0.5rem; /* Space below the image */
 }
 
-.welcome-text {
-    font-size: 4rem; /* Large font size for "Welcome to" */
-    margin-bottom: -2rem; /* Spacing */
-    text-align: center; /* Center alignment */
-    color: #eeeeeeee; /* Text color */
-    padding-top: 0rem;
+/* Welcome text styling */
+.login-welcome-text {
+    font-size: 4rem; /* Extra-large font */
+    margin-bottom: -1rem; /* Negative margin to pull closer */
+    text-align: center; /* Center-align text */
+    color: #eeeeee; /* Light gray color */
+    padding-top: 2rem; /* Top padding for spacing */
 }
 
-.nitro-tech-text {
-    font-size: 3rem; /* Smaller size for "Nitro Tech" */
-    margin: 1px 0; /* Smaller margin for less space */
-    text-align: center; /* Center alignment */
-    color: #e5e4e4ee; /* Text color */
+/* Nitro Tech text styling */
+.login-nitro-tech-text {
+    font-size: 3rem; /* Medium font size */
+    margin: 1px 0; /* Minimal margin */
+    text-align: center; /* Center-align text */
+    color: #eeeeee; /* Light gray color */
+
 }
 
-.go-to-forgetpass a {
-    padding-left: 0.5rem;
-    color: #eeeeeeee;
-    text-decoration: none;
+/* Forgot password link styling */
+.login-go-to-forgetpass a {
+    padding-left: 0.5rem; /* Adjust horizontal space */
+    color: #eeeeee; /* Light gray text */
+    text-decoration: none; /* No underline */
 }
 
-.go-to-forgetpass a:hover {
-    text-decoration: underline;
+/* Hover effect on the forgot password link */
+.login-go-to-forgetpass a:hover {
+    text-decoration: underline; /* Underline on hover */
 }
 
-/* Media query for responsiveness */
+/* Responsive design for smaller screens */
 @media (max-width: 600px) {
-    .image-container {
-        padding: 1rem; /* Adjust padding for smaller screens */
+    .login-image-container {
+        padding: 1rem; /* Adjust padding on small screens */
     }
 
-    .welcome-text {
+    .login-welcome-text {
         font-size: 2.5rem; /* Scale down text size */
     }
 
-    .nitro-tech-text {
-        font-size: 1.8rem; /* Adjust text size */
+    .login-nitro-tech-text {
+        font-size: 1.8rem; /* Adjust size for smaller screens */
     }
 
-    .center-img {
-        width: 100%; /* Make image responsive */
-        max-width: 25rem;
+    .login-center-img {
+        width: 100%; /* Make the image responsive */
+        max-width: 25rem; /* Limit maximum size */
     }
 }

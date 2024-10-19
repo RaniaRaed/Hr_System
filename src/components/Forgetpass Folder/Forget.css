@@ -1,135 +1,159 @@
-/* Container for the forgot password page */
+/* Container for the forgot password page - Ensures the page takes up the full height of the viewport */
 .forgot-password-container {
-    display: flex;
-    height: 100vh;
+    display: flex; /* Align elements side-by-side */
+    height: 100vh; /* Full viewport height */
 }
+
 /* Left side - Form container */
-.form-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    background-color: #010D17;
-    color: white;
-    border-radius: 2px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-     max-width: 90%; 
+.forgetpass-form-container {
+    display: flex; /* Enable flexible layout */
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 9rem; /* Uniform padding for consistency */
+    background-color: #010D17; /* Dark background color */
+    color: white; /* White text for contrast */
+    border-radius: 2px; /* Slightly rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Light shadow for elevation */
+    max-width: 400px; /* Limit the width of the form */
 }
 
+/* Forgot password header - aligns with the form inputs */
 .forgetpass {
-    font-size: 2.5rem;
-    align-self: center; /* Align with input fields */
-    width: 100%; /* Match the input width */
-    padding-left: 16rem; /* Add space to match input padding */
-    margin: 0;
-  }
-  .text-forgetpass{
-    margin-top: 0.5rem;
+    font-size: 2.3rem; /* Large font size */
+    align-self: center; /* Align horizontally with input fields */
+    width: 100%; /* Match input width */
+    padding-left: 2rem; /* Add padding for alignment */
+    margin: 0; /* Remove margin for better spacing */
+}
+
+/* Additional spacing for the subtitle text */
+.forgetpass-text {
+    margin-top: 0.5rem; 
     margin-bottom: 2rem;
-  }
-/* Input styles */
+}
+
+/* Input styles - common across all text inputs */
 input {
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0;
-    transition: border 0.3s;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px; /* Internal spacing */
+    width: 100%; /* Full width of the parent */
+    margin: 10px 0; /* Vertical spacing */
+    transition: border 0.3s; /* Smooth transition for border */
 }
 
+/* Input focus state - adds blue border and removes outline */
 input:focus {
-    border-color: #007BFF;
-    outline: none;
+    border-color: #007BFF; /* Blue border on focus */
+    outline: none; /* Remove browser's default outline */
 }
+
+/* Visible focus state for accessibility - adds a glow */
 input:focus-visible {
-    border-color: #34c3ff;
-    box-shadow: 0 0 5px rgba(52, 195, 255, 0.6);
+    border-color: #34c3ff; /* Lighter blue border */
+    box-shadow: 0 0 5px rgba(52, 195, 255, 0.6); /* Subtle glow effect */
 }
 
+/* Placeholder text styling */
 input::placeholder {
-    color: #aaa;
-    font-style: italic;
+    color: #aaa; /* Light gray text */
+    font-style: italic; /* Italic font for placeholder */
 }
 
-/* Button styles */
+/* Button styling - rounded with blue background */
 button {
-    background-color: #4C77A7;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px 0;
+    background-color: #4C77A7; /* Primary button color */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px; /* Internal spacing */
+    width: 100%; /* Full width of parent */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth color transition */
+    margin: 10px 0; /* Vertical spacing */
 }
 
+/* Button hover effect */
 button:hover {
-    background-color: #06468a;
+    background-color: #06468a; /* Darker blue on hover */
 }
 
-/* Back to login link styling */
-.back-to-login {
-    margin-top: 1rem;
+/* Back to login link container */
+.forgetpass-back-to-login {
+    margin-top: 1rem; /* Top margin for spacing */
 }
 
-.back-to-login a {
-    color: #4C77A7;
-    text-decoration: none;
+/* Styling for the login link */
+.forgetpass-back-to-login a {
+    color: #4C77A7; /* Blue color */
+    text-decoration: none; /* Remove underline */
 }
 
-.back-to-login a:hover {
-    text-decoration: underline;
+/* Hover effect for the login link */
+.forgetpass-back-to-login a:hover {
+    text-decoration: underline; /* Underline on hover */
 }
 
-/* Right side - Background image section */
-.image-container {
-    flex: 1;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+/* Right side - Background image container */
+.forgetpass-image-container {
+    flex: 1; /* Take equal space with the form container */
+    position: relative; /* Allows for absolute positioning inside */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    display: flex; /* Enable flexible layout */
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    color: white; /* White text for contrast */
 }
 
-/* Welcome text styling */
-.welcome-text {
-    font-size: 4rem;
-    margin-bottom: -1rem;
-    text-align: center;
-    color: #eeeeee;
-    padding-top: 2rem;
+/* Welcome text styling - Large text for heading */
+.forgetpass-welcome-text {
+    font-size: 4rem; /* Extra-large font */
+    margin-bottom: -1rem; /* Negative margin to pull closer */
+    text-align: center; /* Center-align text */
+    color: #eeeeee; /* Light gray color */
+    padding-top: 2rem; /* Top padding for spacing */
 }
 
-/* Nitro Tech text styling */
-.nitro-tech-text {
-    font-size: 2.5rem;
-    margin: 1px 0;
-    text-align: center;
-    color: #eeeeee;
+/* Nitro Tech text styling - Medium-sized brand name */
+.forgetpass-nitro-tech-text {
+    font-size: 3rem; /* Medium font size */
+    margin: 1px 0; /* Minimal margin */
+    text-align: center; /* Center-align text */
+    color: #eeeeee; /* Light gray color */
 }
+
+.forgetpass-center-img {
+    width: 55rem; /* Fixed width */
+    height: 30rem; /* Fixed height */
+    object-fit: scale-down; /* Keep aspect ratio within bounds */
+    margin-bottom: 0.5rem; /* Space below the image */
+}
+
+/* Input and button box-sizing - Ensures consistent width and padding */
 input, button {
-    box-sizing: border-box; /* Ensures consistent padding and width */
+    box-sizing: border-box; /* Includes padding and border in width */
 }
 
-/* Responsive design adjustments */
+/* Responsive design for smaller screens */
 @media (max-width: 600px) {
-    .form-container {
-        padding: 1rem;
-        width: 90%;
-    }
-    .welcome-text {
-        font-size: 2rem;
+    .forgetpass-form-container {
+        padding: 1rem; /* Less padding on small screens */
+        width: 90%; /* Adjust width */
     }
 
-    .nitro-tech-text {
-        font-size: 1.5rem;
+    .forgetpass-welcome-text {
+        font-size: 2rem; /* Smaller font size for heading */
+    }
+
+    .forgetpass-nitro-tech-text {
+        font-size: 1.5rem; /* Adjusted font size for brand text */
+    }
+    
+    .forgetpass-center-img {
+        width: 100%; /* Make the image responsive */
+        max-width: 25rem; /* Limit maximum size */
     }
 }
-

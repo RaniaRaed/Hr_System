@@ -1,0 +1,18 @@
+.layout-container {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.content {
+    flex: 1;
+    margin-left: 20rem;
+    margin-top: 20px; /* Add space below the topbar */
+    padding: 20px; /* Optional padding for inner content */
+    flex: 1; /* Allow content to grow and take remaining space */
+    overflow: hidden; /* Add scroll if content overflows */
+}

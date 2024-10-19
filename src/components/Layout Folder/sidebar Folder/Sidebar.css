@@ -1,0 +1,137 @@
+:root {
+    --blue: #010D17; /* Primary color used throughout the sidebar */
+    --white: #fff; /* White color for backgrounds and text */
+    --gray: #f5f5f5; /* Light gray for softer backgrounds */
+    --black1: rgba(34, 34, 34, 0.5); /* Semi-transparent black for overlays */
+    --black2: #999; /* Gray for text or borders */
+}
+
+
+/* Sidebar Logo (Static, No Hover) */
+.sidebar-logo {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    color: var(--white); /* Text color for the logo */
+
+}
+
+.sidebar-img-logo {
+    font-size: 2rem; /* Size of the logo text */
+    margin-right: 1.25rem; /* 20px */
+}
+
+/* Move logo and text logo slightly higher */
+.sidebar-logo {
+    padding-top: 0.625rem; /* 10px */
+}
+
+.sidebar-logo .sidebar-icon {
+    font-size: 3rem; /* Size of the logo icon */
+    margin-right: 1.25rem; /* 20px */
+} 
+
+.sidebar-logo-text {
+    color: var(--white);
+    font-size: 2rem; 
+    margin-right: 1.25rem; /* 20px */
+    cursor: pointer;
+}
+
+/* Sidebar Navigation */
+.sidebar-navigation {
+    position: fixed; /* Fixed position to keep sidebar in view */
+    width: 18.75rem; /* 300px */
+    border-radius: 0.3125rem; /* 5px */
+    height: 100%; /* Full height of the viewport */
+    background: var(--blue); /* Background color for the sidebar */
+    border-left: 0.625rem solid var(--blue); /* 10px */
+    transition: 0.5s; /* Transition for smooth open/close */
+    overflow: hidden; /* Hide overflowing content */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between; /* Space between sections */
+}
+
+/* Main Links */
+.sidebar-navigation ul {
+    flex-grow: 1; /* Allow the list to grow and take available space */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.sidebar-navigation ul li {
+    list-style: none; /* Remove default list styling */
+    transition: background-color 0.3s; /* Transition for hover effects */
+    position: relative; /* Important for absolute positioning of pseudo-elements */
+    margin: 0.3125rem 0; /* 5px */
+}
+
+.sidebar-navigation ul li:hover {
+    background-color: var(--white); /* Light background on hover */
+}
+
+.sidebar-links {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove underline from links */
+    color: var(--white); /* White color for link text */
+    padding: 0.9375rem; /* 15px */
+    transition: color 0.3s; /* Transition for hover color change */
+    border-radius: 1.875rem; /* 30px */
+}
+
+.sidebar-links:hover {
+    color: var(--blue); /* Change link color on hover */
+}
+
+.sidebar-icon {
+    min-width: 3.75rem; /* 60px */
+    text-align: center; /* Center icon within its container */
+}
+
+.sidebar-icon ion-icon {
+    font-size: 1.75rem; /* Size of the icon */
+}
+
+.sidebar-title {
+    white-space: nowrap; /* Prevent text wrapping */
+    padding-left: 1.25rem; /* 20px */
+}
+
+/* Bottom Section */
+.sidebar-bottom-section {
+    padding: 0.9375rem 0; /* 15px */
+}
+
+.sidebar-divider {
+    border-top: 1px solid var(--white); /* Divider line */
+    margin: 0.625rem 0.9375rem; /* 10px 15px */
+}
+
+.sidebar-bottom-section ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.sidebar-bottom-section li {
+    transition: background-color 0.3s; /* Transition for hover effects */
+}
+
+.sidebar-bottom-section li:hover {
+    background-color: var(--white); /* Light background on hover */
+}
+
+.sidebar-bottom-section .links {
+    color: var(--white); /* Color for links in the bottom section */
+}
+
+.sidebar-bottom-section .links:hover {
+    color: var(--blue); /* Change link color on hover */
+}
+
+/* Hover Effects */
+.sidebar-navigation ul li {
+    position: relative; /* Important for absolute positioning of pseudo-elements */
+    border-radius: 1.875rem; /* 30px */
+}
