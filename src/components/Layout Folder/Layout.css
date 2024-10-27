@@ -3,12 +3,12 @@
     height: 100vh; /* Full height of the viewport */
 }
 
-.main-container {
+.layout-main-container {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.content {
+.layout-content {
     flex: 1;
     margin-left: 20rem;
     margin-top: 20px; /* Add space below the topbar */

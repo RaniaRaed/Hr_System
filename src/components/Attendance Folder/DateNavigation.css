@@ -1,0 +1,65 @@
+.date-bar {
+  display: flex;
+  justify-content: flex-start; /* محاذاة العناصر في البداية */
+  gap: 15px; /* إضافة مسافة متناسقة بين العناصر */
+  padding: 0; /* إزالة أي حشو إضافي */
+}
+
+.date {
+  cursor: pointer;
+  padding: 15px; /* زيادة الحشو لجعل الصناديق أكبر */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* زوايا مدورة */
+  text-align: center;
+  width: 70px; /* عرض ثابت */
+  height: 70px; /* ارتفاع ثابت */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease; /* انتقال سلس */
+  background-color: #f9f9f9; /* لون خلفية فاتح */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+.date:hover {
+  background-color: #e6e6e6; /* لون خلفية عند التحويم */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* ظل أقوى عند التحويم */
+}
+
+.date.active {
+  background-color: #007bff; /* لون الخلفية عند النشاط */
+  color: white; /* لون النص */
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* ظل عند النشاط */
+}
+
+.date.current {
+  background-color: #0e0845; /* لون الخلفية لليوم الحالي */
+  color: white; /* لون النص */
+  font-weight: bold; /* زيادة سمك النص */
+  border: 2px solid #007bff; /* إطار عند اليوم الحالي */
+}
+
+.date span {
+  font-size: 14px; /* حجم خط أكبر للتسميات */
+  color: #666; /* لون النص */
+  margin-top: 4px; /* إضافة مسافة بين الرقم والتسمية */
+}
+.date-bar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 0;
+  overflow-x: auto; /* يسمح بالتمرير الأفقي */
+  scrollbar-width: thin; /* حجم شريط التمرير */
+  scrollbar-color: #007bff #f0f0f0; /* لون شريط التمرير */
+}
+
+.date-bar::-webkit-scrollbar {
+  height: 8px; /* حجم شريط التمرير على المتصفح */
+}
+
+.date-bar::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* لون المقبض */
+  border-radius: 10px;
+}

@@ -1,0 +1,84 @@
+/* الحاوية الرئيسية للمنزلق */
+.slider-container {
+  display: flex; /* عرض العناصر الفرعية بترتيب معين */
+  flex-direction: column; /* ترتيب العناصر بشكل عمودي */
+  align-items: center; /* محاذاة العناصر أفقيًا في المنتصف */
+  gap: 18px; /* مسافة بين كل عنصر وآخر */
+  margin: 10px; /* مسافة خارجية للحاوية الرئيسية */
+}
+
+/* القسم الخاص بعرض الصورة الكبيرة المختارة */
+.selected-image {
+  margin-right: 20px; /* مسافة من الجهة اليمنى */
+  border: 1px solid #adadad7c; /* إطار خفيف بلون رمادي */
+  width: 100%; /* عرض الحاوية بالكامل */
+  height: 300px; /* ارتفاع الحاوية */
+  position: relative; /* لتفعيل تراكب المحتوى */
+  display: flex; /* تنظيم المحتويات الفرعية */
+  justify-content: center; /* محاذاة العناصر أفقيًا في المنتصف */
+  align-items: center; /* محاذاة العناصر رأسيًا في المنتصف */
+  background-color: #f0f0f0; /* خلفية رمادية فاتحة */
+  border-radius: 10px; /* زوايا مستديرة */
+  overflow: hidden; /* إخفاء المحتويات الزائدة عن الحدود */
+}
+
+/* ضبط عرض الصورة المختارة لتغطي الحاوية */
+.selected-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ملء الحاوية بالكامل دون تشويه */
+  border-radius: 10px;
+  transition: filter 0.5s ease; /* تأثير التغيير في الضبابية */
+}
+
+/* تراكب النصوص فوق الصورة */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* خلفية شفافة */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* إخفاء النص في البداية */
+  transition: opacity 0.5s ease; /* تأثير الظهور التدريجي */
+}
+
+/* تأثير التمرير فوق الصورة الكبيرة */
+.selected-image:hover img {
+  filter: blur(5px); /* تطبيق ضبابية */
+}
+
+.selected-image:hover .image-overlay {
+  opacity: 1; /* إظهار النص */
+}
+
+/* حاوية الصور المصغرة */
+.thumbnails {
+  display: flex; /* ترتيب الصور في صف */
+  justify-content: center;
+  gap: 20px; /* مسافة بين الصور */
+}
+
+/* تنسيق الصور المصغرة */
+.thumbnails img {
+  margin-left: -10px;
+  margin-right: 5px; /* مسافة بين الصور المصغرة */
+  object-fit: cover; /* الحفاظ على تناسب الصورة */
+  border: 1px solid #adadad7c; /* إطار خفيف */
+  width: 200px; /* عرض الصورة المصغرة */
+  height: 160px; /* ارتفاع الصورة المصغرة */
+  border-radius: 10px; /* زوايا مستديرة */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* تأثيرات التكبير والظل */
+}
+
+/* تأثير التكبير والظل عند تمرير الفأرة */
+.thumbnails img:hover {
+  transform: scale(1.1); /* تكبير طفيف */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+}

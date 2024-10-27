@@ -1,5 +1,5 @@
 :root {
-    --blue: #010D17; /* Primary color used throughout the sidebar */
+    --blue: #021035; /* Primary color used throughout the sidebar */
     --white: #fff; /* White color for backgrounds and text */
     --gray: #f5f5f5; /* Light gray for softer backgrounds */
     --black1: rgba(34, 34, 34, 0.5); /* Semi-transparent black for overlays */
@@ -40,19 +40,19 @@
 
 /* Sidebar Navigation */
 .sidebar-navigation {
-    position: fixed; /* Fixed position to keep sidebar in view */
+    position: fixed;
     width: 18.75rem; /* 300px */
     border-radius: 0.3125rem; /* 5px */
-    height: 100%; /* Full height of the viewport */
-    background: var(--blue); /* Background color for the sidebar */
-    border-left: 0.625rem solid var(--blue); /* 10px */
-    transition: 0.5s; /* Transition for smooth open/close */
-    overflow: hidden; /* Hide overflowing content */
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: space-between; /* Space between sections */
+    height: 100%;
+    background: var(--blue);
+    border-left: 0.625rem solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem; /* إضافة Padding للـ Sidebar */
 }
-
 /* Main Links */
 .sidebar-navigation ul {
     flex-grow: 1; /* Allow the list to grow and take available space */
@@ -96,7 +96,7 @@
 
 .sidebar-title {
     white-space: nowrap; /* Prevent text wrapping */
-    padding-left: 1.25rem; /* 20px */
+    padding-left: 1.3rem; /* 20px */
 }
 
 /* Bottom Section */

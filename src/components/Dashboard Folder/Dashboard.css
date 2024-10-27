@@ -1,35 +1,339 @@
-.dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start; /* Align items at the top */
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+.admin-dashboard-container {
+  padding: 40px; /* Padding inside the admin dashboard container */
+  background-color: #f5f5f5; /* Light gray background */
+  max-width: 700px; /* Max width for the admin dashboard */
+  max-height: 75vh; /* Set a max height for the dashboard */
+  margin: 40px auto 0; /* Center the admin dashboard with space at the top */
+  overflow: auto; /* Enable scrolling for overflow content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+}
+
+.event-admin-dashboard,
+.alert-section {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9; /* Light background for sections */
+  border-radius: 8px;
+  padding: 20px 30px;
+  margin-bottom: 20px; /* Space between sections */
+}
+
+.admin-form {
+  display: flex; /* Optional: Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.admin-form input,
+.admin-form button,
+.admin-form textarea {
+  background-color: #e7e7e7; /* Light gray background for input fields */
+  color: #2a2a2a; /* Dark text color */
+  font-size: 14px; /* Font size */
+  font-weight: 300; /* Font weight */
+  width: 100%; /* Full width for input elements and buttons */
+  margin-bottom: 10px; /* Space between elements */
+  padding: 20px; /* Padding inside input fields */
+  border: 1px solid #ccc; /* Border for input fields */
+  border-radius: 10px; /* Rounded corners for input fields */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border and shadow */
+}
+
+/* Set a fixed width for the textarea */
+.admin-form textarea {
+  color: #2a2a2a; /* Dark text color */
+  font-size: 14px; /* Font size */
+  font-weight: 400; /* Font weight */
+  max-width: 640px; /* Optional: if you still want a max width */
+  resize: both; /* Allow resizing in both directions */
+  min-height: 65px; /* Set a minimum height for better usability */
+}
+
+/* Focus styles for input and textarea */
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: rgb(5, 115, 152); /* Border color on focus */
+  box-shadow: 0 0 0.1875rem rgba(0, 166, 221, 0.5); /* Light blue glow effect with transparency */
+  outline: none; /* Remove default outline */
+}
+
+/* Button specific styles */
+.admin-form button {
+  font-size: 15px; /* Font size for buttons */
+  border-radius: 10px; /* Rounded corners for buttons */
+  background-color: #4C77A7; /* Dark blue background for buttons */
+  color: white; /* White text for buttons */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.admin-form button:hover {
+  background-color: #06468a; /* Darker blue on hover */
 }
 
 
-.dashboard-widgets {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
+
+
+
+
+
+
+
+.employdashboard-container {
+  display: flex; /* Use flexbox to arrange items */
+  flex-direction: column; /* Arrange items vertically */
+  height: 100vh; /* Set the height to full viewport height */
+  font-family: Arial, sans-serif; /* Define font for the dashboard */
 }
 
+/* Layout for the main content area */
+.employdashboard-content {
+  display: flex; /* Use flexbox for layout */
+  flex: 1; /* Fill available space */
+  padding: 0 15px; /* Add padding around content */
+  overflow: auto; /* Enable scrolling for overflow content */
+  gap: 0px; /* Set spacing between sections */
+}
+
+/* Styles for the left section of the dashboard */
+.employdashboard-left {
+  flex: 6.5; /* Allocate more space for the left section */
+  display: flex; /* Use flexbox for item arrangement */
+  flex-wrap: wrap; /* Wrap items into new rows as needed */
+  gap: 11px; /* Space between widgets */
+  align-items: flex-start; /* Align items to the top */
+}
+
+/* Styles for the right section of the dashboard */
+.employdashboard-right {
+  flex: 4.5; /* Allocate space for the right section */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange items vertically */
+  gap: 20px; /* Space between items */
+  padding: 0px 1px 10px; /* Set padding */
+  min-width: 300px; /* Minimum width for the right section */
+  min-height: 780px; /* Minimum height for the right section */
+}
+
+/* Styles for the header area */
+.employdashboard-header {
+  color: #0e054e; /* Set header text color */
+  padding: 22px; /* Add padding */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute space between elements */
+  align-items: center; /* Vertically center items */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+.employdashboard-title {
+  font-size: 30px; /* Set title font size */
+  margin: 0; /* Remove default margins */
+  font-weight: bold; /* Make title bold */
+}
+
+.employdashboard-current-time {
+  color: #0e054e; /* Set current time text color */
+  font-size: 20px; /* Set font size for time */
+  font-weight: bold; /* Make time bold */
+}
+
+/* Styles for individual widgets */
 .widget {
-    background-color: #010D17;
-    color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  background-color: #d9d5d5; /* Set widget background color */
+  color: #455068; /* Set text color */
+  border: 1px solid #cccccc; /* Add borders around widgets */
+  border-radius: 8px; /* Round corners of widgets */
+  padding: 1px; /* Set padding */
+  width: 210px; /* Fixed width for widgets */
+  height: 200px; /* Fixed height for widgets */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8); /* Add shadow for depth */
+  text-align: center; /* Center text within the widget */
+  margin-bottom: 15px; /* Space below each widget */
+  overflow: hidden; /* Prevent content overflow */
+  display: flex; /* Use flexbox within the widget */
+  flex-direction: column; /* Arrange items vertically within widget */
+  justify-content: space-around; /* Evenly distribute space in the widget */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
 }
 
-.widget h2 {
-    margin-bottom: 10px;
+.widget:hover {
+  transform: scale(1.01); /* Slightly enlarge widget on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
 }
 
-.widget p {
-    color: #bbb;
+.widget img {
+  max-width: 60%; /* Set maximum width for images */
+  height: auto; /* Automatically adjust height */
+  margin: 0 auto 5px; /* Center image with margin below */
+}
+
+.widget content {
+  font-size: larger; /* Set content font size */
+  color: #455068; /* Set content text color */
+}
+.widget-link {
+  text-decoration: none; /* إزالة الخط السفلي */
+  color: inherit; /* إبقاء لون النص الأصلي */
+}
+
+/* Adjusted styles for the slider container */
+.employdashboard-widget-slider-container {
+  width: 100%; /* Full width to fill its parent */
+  max-width: 800px; /* Set a wider maximum width */
+  margin: 0 auto; /* Center the slider horizontally */
+  border-radius: 8px; /* Round corners */
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Styles for the slider itself */
+.employdashboard-widget-slider-container .slider {
+  width: 100%; /* Ensure the slider stretches fully */
+  height: 300px; /* Adjust height as needed */
+  background-color: #f5f5f5; /* Set slider background */
+  display: flex; /* Use flexbox for content alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  gap: 15px; /* Space between slider elements */
+}
+/* Adjustments for recent activity and alerts sections */
+.employdashboard-recent-activity, .employdashboard-alerts-section {
+  width: 100%; /* Full width for the right section */
+  box-sizing: border-box; /* Include padding and borders in width calculations */
+}
+
+.employdashboard-recent-activity {
+  background-color: #0E2C75; /* Set background color for recent activity */
+  color: white; /* Set text color */
+  padding: 50px; /* Add padding */
+  border-radius: 15px; /* Round corners */
+  min-height: 400px; /* Minimum height for this section */
+  width: 100%; /* Full width */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  /* Enable scrolling for overflow content */
+}
+
+.employdashboard-recent-activity-columns {
+  display: flex; /* Use flexbox for item distribution */
+  flex-direction: column; /* Arrange items vertically */
+}
+
+.employdashboard-activity-column {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center items */
+  border-bottom: 1px solid #f1f0f5; /* Add bottom borders */
+  padding: 10px 0; /* Set padding */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+  margin-top: 15px; /* Space above activity columns */
+}
+
+.employdashboard-activity-column:hover {
+  background-color: rgba(149, 189, 247, 0.1); /* Change background color on hover */
+  transform: scale(1.0); /* Slightly enlarge on hover */
+}
+
+.employdashboard-activity-text {
+  margin: 0; /* Remove default margins */
+  font-size: 16px; /* Set font size */
+  color: white; /* Set text color */
+  margin-left: 15px; /* Space between icon and text */
+}
+
+.employdashboard-activity-time {
+  margin: 0; /* Remove default margins */
+  font-size: 12px; /* Set font size for time */
+  color: #d0d0d0; /* Set lighter color for time */
+  margin-top: 3px; /* Space above time text */
+  display: block; /* Ensure it takes a new line */
+  margin-left: 20px; /* Space on the left */
+}
+
+.employdashboard-recent-activity-header {
+  margin: 0; /* Remove default margins */
+  padding: 10px 0; /* Set padding */
+  font-size: 25px; /* Set font size */
+  font-weight: bold; /* Make header bold */
+  text-align: left; /* Left-align text */
+  margin-bottom: 1px; /* Space below header */
+  color: #e0dfdf; /* Set header color */
+  transform: translateY(-10px); /* Slightly raise header */
+}
+
+/* Styles for alert items */
+.employdashboard-alert-item {
+  background-color: #0e86c733; /* Set alert item background color */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center items */
+  gap: 15px; /* Space between elements */
+  border: 1px solid #0e054e; /* Set borders around alert items */
+  border-radius: 8px; /* Round corners */
+  padding: 10px; /* Set padding */
+  margin-bottom: 10px; /* Space below alert item */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+}
+
+.employdashboard-alert-item:hover {
+  background-color: #026a9d72; /* Change background color on hover */
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+/* Styles for alert text */
+.employdashboard-alerts-text {
+  margin: 0; /* Remove default margins */
+  font-size: 14px; /* Set alert text font size */
+  color: #455068; /* Set main alert text color */
+}
+
+/* Styles for alert time text */
+.employdashboard-alert-time {
+  margin: 0; /* Remove default margins */
+  font-size: 12px; /* Set font size for alert time */
+  color: #717070; /* Set lighter color for alert time */
+  margin-top: 5px; /* Space above alert time text */
+  display: block; /* Ensure it takes a new line */
+}
+
+/* Styles for alert icons */
+.employdashboard-alert-icon {
+  padding-bottom: 2px; /* Space below the icon */
+  font-size: 20px; /* Set icon size */
+}
+
+/* Styles for the alerts section */
+.employdashboard-alerts-section {
+  background-color: #ffffff; /* Set
+css
+  /* Set background color for alerts section */
+  background-color: #ffffff; /* Background color for the alerts section */
+  padding: 25px; /* Padding for the alerts section */
+  border-radius: 8px; /* Round corners */
+  border: 1px solid #0e054e; /* Border for the alerts section */
+  gap: 10px; /* Space between elements */
+  min-height: 300px; /* Minimum height for the alerts section */
+  box-sizing: border-box; /* Include padding and borders in width calculations */
+}
+
+/* Styles for the alert section header */
+.employdashboard-alerts-section h2 {
+  margin: 0; /* Remove default margins */
+  padding: 10px 0; /* Set padding */
+  font-size: 20px; /* Set font size for header */
+  font-weight: bold; /* Make header bold */
+  text-align: left; /* Left-align header text */
+  margin-bottom: 10px; /* Space below header */
+  transform: translateY(-10px); /* Slightly raise header */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .employdashboard-content {
+    flex-direction: column; /* Change direction to vertical on small screens */
+  }
+
+  .employdashboard-left {
+    margin-right: 0; /* Remove right margin for small screens */
+  }
+
+  .widget {
+    width: 100%; /* Make widgets full width on small screens */
+  }
 }

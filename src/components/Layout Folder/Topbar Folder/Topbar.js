@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Topbar.css'; // Import CSS for styling the top bar
-import profileImage from '../../img/zoz-prof.png'; // Import the profile image
+import profileImage from '../../img/Ran-prof.png'; // Import the profile image
 
 const TopBar = () => {
     // Effect hook to dynamically load Ionicons for icons

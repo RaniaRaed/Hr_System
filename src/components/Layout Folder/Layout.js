@@ -8,9 +8,9 @@ const Layout = () => {
     return (
         <div className="layout-container">
             <Sidebar />
-            <div className="main-container">
+            <div className="layout-main-container">
                 <Topbar />
-                <div className="content">
+                <div className="layout-content">
                     <Outlet /> {/* Render child routes here */}
                 </div>
             </div>

@@ -10,7 +10,7 @@
 .topbar {
     position: fixed; /* Fixes the top bar to the top of the viewport */
     top: 0;
-    left: 19.375rem; /* Adjust according to sidebar width (310px / 16) */
+    left: 20.375rem; /* Adjust according to sidebar width (310px / 16) */
     width: calc(100% - 21.875rem); /* Full width minus sidebar width (350px / 16) */
     height: 3.75rem; /* Height of the top bar (60px / 16) */
     display: flex; /* Use flexbox for layout */
@@ -18,7 +18,7 @@
     justify-content: space-between; /* Space items evenly */
     background-color: var(--white); /* Background color of the top bar */
     box-shadow: 0px 0.125rem 0.5rem rgba(11, 11, 11, 0.1); /* Subtle shadow for depth */
-    padding: 0 1.25rem; /* Padding left and right (20px / 16) */
+    padding: 0 1.5rem; /* Padding left and right (20px / 16) */
     z-index: 1000; /* Ensure the top bar is above other elements */
     transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
@@ -27,41 +27,41 @@
 .topbar-right {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    gap: 1.25rem; /* Space between search, notification, and profile (20px / 16) */
+    gap: 1.1rem; /* Space between search, notification, and profile (20px / 16) */
 }
 
 /* Search Section */
 .topbar-search {
+    margin-right: 0.3rem;
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
     position: relative; /* For absolute positioning of icons */
     width: 18.75rem; /* Width of the search input (300px / 16) */
+
 }
 
 .topbar-search label input {
-    background-color: #dfdfdf; /* Background color for the input */
+    background-color: #ececec; /* Background color for the input */
     outline: none; /* Removes the default outline */
-    width: 25rem; /* width of the input  */
-    height: 2.7rem; /* Height of the input (40px / 16) */
+    width: 24rem; /* width of the input  */
+    height: 1.5rem; /* Height of the input (40px / 16) */
     border-radius: 2.5rem; /* Rounded corners (40px / 16) */
     padding: 0.625rem 1.25rem 0.3125rem 3.125rem; /* Padding inside the input */
     font-size: 1rem; /* Font size for the input */
     border: 1px solid #cac9c9; /* Border color */
     transition: border-color 0.2s, box-shadow 0.3s ease-in-out; /* Transition effects */
-
-    /* Subtle box-shadow for focus */
     box-shadow: none; /* Default (no shadow) */
 }
 
 .topbar-search label input:focus {
-    border-color: var(--blue); /* Border color on focus */
-    box-shadow: 0 0 0.1875rem var(--blue); /* Light blue glow effect (3px / 16) */
+    border-color: rgb(0, 166, 221); /* Border color on focus */
+    box-shadow: 0 0 0.1875rem ; /* Light blue glow effect (3px / 16) */
 }
 
 .topbar-search label ion-icon {
     position: absolute; /* Position the icon absolutely */
     left: 0.9375rem; /* Position from the left (15px / 16) */
-    bottom: 1.125rem; /* Position from the bottom (18px / 16) */
+    bottom: 0.5rem; /* Position from the bottom (18px / 16) */
     font-size: 1.5rem; /* Font size for the icon */
     color: #666; /* Color of the icon */
 }
@@ -71,9 +71,9 @@
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
-    width: 2.8125rem; /* Width of the notification icon (45px / 16) */
-    height: 2.8125rem; /* Height of the notification icon (45px / 16) */
-    background-color: #dfdfdf; /* Background color for the icon */
+    width: 2.5rem; /* Width of the notification icon (45px / 16) */
+    height: 2.5rem; /* Height of the notification icon (45px / 16) */
+    background-color: #ececec; /* Background color for the icon */
     border-radius: 50%; /* Make it circular */
     cursor: pointer; /* Show pointer on hover */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
@@ -91,20 +91,23 @@
 }
 
 /* Profile Icon */
+/* Profile Icon */
 .topbar-profile {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    width: 2.8125rem; /* Width of the profile icon (45px / 16) */
-    height: 2.8125rem; /* Height of the profile icon (45px / 16) */
+    width: 2.5rem; /* Width of the profile icon (45px / 16) */
+    height: 2.5rem; /* Height of the profile icon (45px / 16) */
     border-radius: 50%; /* Make it circular */
     overflow: hidden; /* Hide overflow */
     cursor: pointer; /* Show pointer on hover */
     transition: transform 0.3s ease; /* Smooth transition for scaling */
+    margin-right: 1.5rem; /* زيادة المسافة من اليسار (24px / 16) */
 }
 
 .topbar-profile:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
 }
+
 
 .topbar-profile img {
     width: 100%; /* Full width of the container */

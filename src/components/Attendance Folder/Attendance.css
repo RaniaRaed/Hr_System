@@ -1,0 +1,64 @@
+/* الحاوية الرئيسية لتطبيق الحضور */
+.Attendance-app {
+  display: flex; /* استخدم flexbox لتوزيع المحتوى */
+  justify-content: center; /* توسيط المحتوى عمودياً */
+  padding: 4vh 1vw; /* إضافة حشوة على المحاور */
+  height: 100vh; /* اشغال ارتفاع الشاشة بالكامل */
+  overflow: hidden; /* منع التمرير على الحاوية الرئيسية */
+}
+
+/* الحاوية الرئيسية التي تحتوي على الأعمدة */
+.Attendance-main-container {
+  display: flex; /* استخدم flexbox لتوزيع الأعمدة */
+  width: 100%; /* عرض كامل */
+  max-width: 1200px; /* الحد الأقصى للعرض */
+  gap: 1.5vw; /* المسافة بين الأعمدة */
+  box-sizing: border-box; /* احتساب الحشوة في الأبعاد */
+  overflow: auto; /* تفعيل التمرير إذا كان المحتوى أكبر من العرض */
+}
+
+/* تخصيص الحاويتين اليمنى واليسرى */
+.Attendance-left-side, .Attendance-right-side {
+  padding: 3vh 0.1vw; /* إضافة حشوة داخل الحاوية */
+  box-sizing: border-box; /* احتساب الحشوة في الأبعاد */
+  overflow-y: auto; /* تفعيل التمرير العمودي */
+}
+
+/* تخصيص الحاوية اليسرى */
+.Attendance-left-side {
+  flex: 0.6; /* أخذ 60% من العرض الكلي */
+  min-width: 300px; /* الحد الأدنى للعرض */
+  max-height: calc(100vh - 8vh); /* اجعل أقصى ارتفاع 100% من الشاشة مطروحاً منه الحشوات */
+  overflow-y: auto; /* تأكد من أن التمرير مفعل */
+}
+
+/* تخصيص الحاوية اليمنى */
+.Attendance-right-side {
+  flex: 0.4; /* أخذ 40% من العرض الكلي */
+  min-width: 300px; /* الحد الأدنى للعرض */
+  max-height: calc(100vh - 8vh); /* اجعل أقصى ارتفاع 100% من الشاشة مطروحاً منه الحشوات */
+  overflow-y: auto; /* تأكد من أن التمرير مفعل */
+}
+
+/* تخصيص إشعارات الحضور */
+.attendance-notification {
+  margin-top: 1vh; /* إضافة مسافة من الأعلى */
+  padding: 1vh 1vw; /* إضافة حشوة داخل الإشعار */
+  background-color: #e7f4e4; /* لون خلفية للإشعار */
+  border: 1px solid #c3e6cb; /* حد خفيف للإشعار */
+  color: #155724; /* لون النص */
+  border-radius: 4px; /* زوايا مستديرة للإشعار */
+  font-size: 1rem; /* حجم النص */
+  transition: background-color 0.3s ease; /* تأثير الانتقال عند تغيير الأنماط */
+}
+
+/* تحسين العرض على الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .Attendance-main-container {
+    flex-direction: column; /* تغيير اتجاه الأعمدة إلى عمودي */
+  }
+
+  .Attendance-left-side, .Attendance-right-side {
+    width: 100%; /* اجعل العرض 100% لكل حاوية */
+  }
+}

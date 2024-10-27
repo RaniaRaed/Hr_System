@@ -1,0 +1,79 @@
+.attendance-records {
+  padding: 0 35px; /* Padding around the component */
+  background-color: #f1f1f1; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 2px 1px 2px 1px rgba(53, 53, 53, 0.1); /* Light shadow */
+  max-width: 600px; /* Max width for consistency */
+  margin: 20px auto; /* Center the component */
+  overflow-y: auto; /* Allow vertical scrolling for the records */
+  max-height: 500px; /* Set a max height for the records */
+}
+
+.attendance-records h3 {
+  font-size: x-large;
+  font-weight: bolder;
+  color: #1e1717;
+}
+
+.attendance-records h4 {
+  font-size: medium;
+  font-weight: bolder;
+  color: #1e1717;
+  border-bottom: 2px solid #c5bebe; /* Add bottom border for h4 */
+  padding-bottom: 5px; /* Space between text and border */
+}
+
+.record {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  padding: 10px; /* Space inside each record */
+  margin: 10px 0; /* Space between records */
+  border: 1px solid #ccc; /* Border around each record */
+  border-radius: 12px; /* Rounded corners for records */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+  background-color: #fff; /* White background for records */
+}
+
+.record:hover {
+  background-color: #d6dbde; /* Change background on hover */
+}
+
+.record-info {
+  flex-grow: 1; /* Allow record info to take available space */
+}
+
+.button-container {
+  display: flex; /* Use flex to align button */
+  align-items: end; /* Center button vertically */
+  justify-content: flex-end; /* Align button to the right */
+}
+
+.status {
+  padding: 8px 8px; /* Smaller padding for buttons */
+  border: none; /* Remove default button border */
+  border-radius: 9px; /* Rounded corners for buttons */
+  cursor: pointer; /* Change cursor on hover */
+  font-weight: bold;
+  font-size: 12px; /* Smaller font size for better readability */
+  transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+/* Styles for Present and Absent buttons */
+.status.present {
+  color: white;
+  background-color: #28a745; /* Green for present */
+}
+
+.status.absent {
+  color: white;
+  background-color: #dc3545; /* Red for absent */
+}
+
+/* Change background color on hover */
+.status.present:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.status.absent:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

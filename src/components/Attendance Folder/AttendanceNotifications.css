@@ -1,0 +1,57 @@
+/* General styles for the notification container */
+.attendanceLeave-notification-container {
+    max-width: 640px; /* Limit the width of the notification box */
+    margin: 20px auto; /* Center the notifications on the page */
+    padding: 1rem; /* Padding around the notifications */
+    background-color: #f9f9f9; /* Light background for the notifications area */
+    border: 1px solid #ddd; /* Light border around the notification area */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for individual notification messages */
+.attendanceLeave-notification {
+    background-color: #0e86c733 !important; 
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between message and button */
+    align-items: center; /* Center items vertically */
+    padding: 0.5rem; /* Padding inside each notification */
+    border-bottom: 1px solid #eaeaea; /* Divider between notifications */
+}
+
+.attendanceLeave-notification:last-child {
+    border-bottom: none; /* Remove the border from the last notification */
+}
+
+/* Style for the notification message text */
+.attendanceLeave-notification p {
+    margin: 0; /* Remove default margin */
+    color: #0c0c0c  !important; /* Dark text color */
+    
+    flex-grow: 1; /* Allow text to grow and take available space */
+    text-align: left  !important; /* Align text to the left */
+}
+
+/* Style for the close button */
+.attendanceLeave-notification button {
+    text-align: left  !important; 
+    margin-left: auto ; /* Push the button to the right */
+    background-color: transparent; /* No background for the button */
+    border: none; /* Remove default border */
+    color: #ff4d4d; /* Red color for the close button */
+    font-weight: bold; /* Make the text bold */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Change color on hover */
+.attendanceLeave-notification button:hover {
+    color: #830404; /* Darker red on hover */
+}
+
+/* Style for the "No notifications available" message */
+.attendanceLeave-notification-container p {
+    text-align: center; /* Center the text */
+    color: #999; /* Gray text color */
+    margin: 1rem 0; /* Margin for spacing */
+}
