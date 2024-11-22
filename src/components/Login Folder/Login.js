@@ -33,13 +33,32 @@ const Login = () => {
         localStorage.setItem('refreshToken', user.refresh);
 
         console.log('Login successful');
-        navigate('/dashboard'); // Navigate to dashboard on successful login
+
+        // Fetch protected data after login
+        await fetchProtectedData(user.access);
+
+        // Navigate to dashboard on successful login
+        navigate('/dashboard');
       } else {
         setError('Invalid username or password');
       }
     } catch (error) {
       console.error('Login error:', error);
       setError('Invalid username or password');
+    }
+  };
+
+  // Fetch protected data using the Bearer token
+  const fetchProtectedData = async (token) => {
+    try {
+      const response = await axios.get('/api/protected-data', {
+        headers: {
+          Authorization: `Bearer ${token}`, // Use the Bearer token in the Authorization header
+        },
+      });
+      console.log('Protected Data:', response.data);
+    } catch (error) {
+      console.error('Error fetching protected data:', error);
     }
   };
 

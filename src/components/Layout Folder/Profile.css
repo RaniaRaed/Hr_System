@@ -1,0 +1,119 @@
+.profile-page {
+    padding: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 600px;
+    margin: 35px auto; /* إضافة margin-top بمقدار 25px */
+    background: linear-gradient(145deg, #f0f4f8, #dfe7ec);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* بقية الأنماط كما هي */
+.profile-page h1 {
+    color: #05056e;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-pic-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.profile-pic-upload {
+    font-size: 14px;
+    color: #4CAF50;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.profile-info-section {
+    margin-bottom: 25px;
+}
+
+.profile-info-section h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.profile-info-section label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.profile-info-section input[type="text"],
+.profile-info-section input[type="email"],
+.profile-info-section input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-info-section input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button, .logout-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(200, 0, 0, 0.3);
+}

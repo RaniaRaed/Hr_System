@@ -1,86 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './LeaveRequests.css';
-import { notify } from './AttendanceNotifications'; // Import the notify function
 
-const LeaveRequests = ({ onUpdateRequest }) => {
+const LeaveRequests = () => {
   const [requests, setRequests] = useState([]);
   const [statusMessages, setStatusMessages] = useState([]);
 
-  // Sample Fake Leave Requests
-  const fakeLeaveRequests = [
-    {
-      id: 1,
-      employeeName: 'Alice Johnson',
-      startDate: '2024-11-01',
-      endDate: '2024-11-05',
-      reason: 'Vacation',
-      requestTime: '2024-10-25 10:00 AM',
-      status: 'Pending',
-    },
-    {
-      id: 2,
-      employeeName: 'Bob Smith',
-      startDate: '2024-11-10',
-      endDate: '2024-11-12',
-      reason: 'Medical Leave',
-      requestTime: '2024-10-26 09:30 AM',
-      status: 'Pending',
-    },
-    {
-      id: 3,
-      employeeName: 'Charlie Brown',
-      startDate: '2024-11-15',
-      endDate: '2024-11-20',
-      reason: 'Family Emergency',
-      requestTime: '2024-10-27 11:15 AM',
-      status: 'Pending',
-    },
-    {
-      id: 4,
-      employeeName: 'Daisy White',
-      startDate: '2024-11-22',
-      endDate: '2024-11-25',
-      reason: 'Wedding',
-      requestTime: '2024-10-28 14:45 PM',
-      status: 'Pending',
-    },
-  ];
-
+  // Fetch leave requests from the backend
   useEffect(() => {
     const fetchRequests = async () => {
-      const leaveRequests = fakeLeaveRequests; // Simulating an API call
-      setRequests(leaveRequests);
+      try {
+        const response = await axios.get('/api/leave-requests/');
+        setRequests(response.data); // Assume the response is an array of leave requests
+      } catch (error) {
+        console.error('Error fetching leave requests:', error);
+      }
     };
 
     fetchRequests();
   }, []);
 
+  // Handle status update for a leave request
   const handleStatusUpdate = async (index, status) => {
-    let updateFunction;
-    if (status === 'Approved') {
-      updateFunction = async (id) => {
-        console.log(`Leave request ${id} approved`); // Simulate API call
-      };
-    } else {
-      updateFunction = async (id) => {
-        console.log(`Leave request ${id} rejected`); // Simulate API call
-      };
-    }
-
     try {
-      await updateFunction(requests[index].id);
-      
-      // Update the request's status in the state
-      setRequests(prevRequests => {
+      const request = requests[index];
+
+      // Update the status in the backend
+      await axios.patch(`/api/leave-requests/${request.id}/`, {
+        status,
+      });
+
+      // Update the status in the frontend
+      setRequests((prevRequests) => {
         const updatedRequests = [...prevRequests];
         updatedRequests[index] = { ...updatedRequests[index], status };
         return updatedRequests;
       });
-      
-      // Notify the employee about the status update
-      notify(requests[index].employeeName, status, 'Employee'); // Send notification to the employee
 
-      // Update status message to show in the interface
+      // Notify the employee
+      await axios.post('/api/notifications/', {
+        title: `Leave Request ${status}`,
+        message: `Your leave request from ${request.startDate} to ${request.endDate} has been ${status.toLowerCase()}.`,
+      });
+
+      // Update status message to display in the UI
       setStatusMessages((prevMessages) => {
         const updatedMessages = [...prevMessages];
         updatedMessages[index] = `You have ${status.toLowerCase()}d the request.`;

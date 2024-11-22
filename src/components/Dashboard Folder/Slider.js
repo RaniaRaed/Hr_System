@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+
 import './Slider.css';
 
 // استيراد الصور الافتراضية (تعديل المسارات حسب ملفات المشروع)
 import image1 from '../img/image 1.png';
 import image2 from '../img/image 2.png';
 import image3 from '../img/image 3.png';
+import React, { useState, useEffect } from 'react';
+import './Slider.css';
 
 const Slider = ({ adminImage, adminTitle, adminDescription }) => {
   const defaultImages = [
@@ -16,6 +18,7 @@ const Slider = ({ adminImage, adminTitle, adminDescription }) => {
   const [images, setImages] = useState(defaultImages);
   const [selectedImage, setSelectedImage] = useState(defaultImages[0]);
 
+  // Effect to update images if admin sends new data
   useEffect(() => {
     if (adminImage) {
       const newImage = {
@@ -27,14 +30,16 @@ const Slider = ({ adminImage, adminTitle, adminDescription }) => {
       setImages([newImage, ...defaultImages]);
       setSelectedImage(newImage);
     }
-  }, [adminImage, adminTitle, adminDescription]);
+  }, [adminImage, adminTitle, adminDescription, defaultImages, images.length]);
 
+  // Handle selecting an image from the thumbnail list
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
 
   return (
     <div className="slider-container">
+      {/* Display selected image with title and description */}
       <div className="selected-image">
         <img src={selectedImage.src} alt={selectedImage.title} />
         <div className="image-overlay">
@@ -43,12 +48,14 @@ const Slider = ({ adminImage, adminTitle, adminDescription }) => {
         </div>
       </div>
 
+      {/* Thumbnails of all images */}
       <div className="thumbnails">
         {images.map((image) => (
           <img
             key={image.id}
             src={image.src}
             alt={image.title}
+            className="thumbnail-image"
             onClick={() => handleImageClick(image)}
           />
         ))}

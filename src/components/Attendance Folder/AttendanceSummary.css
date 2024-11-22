@@ -1,4 +1,3 @@
-/* AttendanceSummary.css */
 .attendance-summary {
   background-color: #f9f9f9; /* خلفية خفيفة */
   border-radius: 8px; /* زوايا مدورة */
@@ -7,17 +6,27 @@
   height: 200px; /* ارتفاع ثابت للصندوق */
   position: relative; /* تمكين الوضع النسبي للعناصر الداخلية */
   overflow: hidden; /* إخفاء العناصر الزائدة */
+  text-align: center; /* توسيط النص */
 }
 
 .water {
-  background: linear-gradient(to top, rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0)); /* تدرج لوني */
   position: absolute; /* وضع الماء بشكل مطلق */
   bottom: 0; /* وضع الماء في الأسفل */
   left: 0;
   right: 0;
-  transition: height 0.5s ease; /* تأثير انتقال سلس عند تغيير الارتفاع */
-  animation: wave 2s ease-in-out infinite; /* تأثير الموجة على الماء */
+  transition: height 0.5s ease, background 0.5s ease; /* تأثير انتقال سلس */
   box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2); /* تأثير ظل داخلي للماء */
+  animation: wave 2s ease-in-out infinite; /* تأثير الموجة على الماء */
+}
+
+/* الماء باللون الأخضر للحضور ≥ 50% */
+.water.high {
+  background: linear-gradient(to top, rgba(10, 143, 196, 0.7), rgba(40, 167, 69, 0)); /* أخضر متدرج */
+}
+
+/* الماء باللون الأحمر للحضور < 50% */
+.water.low {
+  background: linear-gradient(to top, rgba(220, 53, 69, 0.7), rgba(220, 53, 69, 0)); /* أحمر متدرج */
 }
 
 @keyframes wave {
@@ -38,26 +47,9 @@
   }
 }
 
-.attendance-stats {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* استخدام عرض كامل للرسوم البيانية */
-  margin-top: 20px;
-}
-
-.stat {
-  text-align: center; /* توسيط النص داخل الصناديق */
-  flex: 1; /* استخدام نفس المرونة لكل صندوق */
-  margin: 0 10px; /* مسافة بين الصناديق */
-}
-
-.stat h2 {
-  font-size: 2em; /* حجم الخط للأرقام */
-  color: #007bff; /* لون أزرق للنص */
-  margin: 0; /* لا يوجد هامش */
-}
-
-.stat p {
-  font-size: 1em; /* حجم الخط للتسميات */
-  color: #555; /* لون داكن للتسميات */
+.attendance-percentage {
+  font-size: 2em; /* حجم النص */
+  font-weight: bold; /* خط عريض */
+  margin-top: 20px; /* مسافة أعلى */
+  color: #555; /* لون النص */
 }

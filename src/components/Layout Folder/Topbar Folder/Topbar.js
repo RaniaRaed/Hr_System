@@ -1,48 +1,66 @@
-import React, { useEffect } from 'react';
-import './Topbar.css'; // Import CSS for styling the top bar
-import profileImage from '../../img/Ran-prof.png'; // Import the profile image
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Topbar.css'; // استيراد تنسيق CSS للتوب بار
+import profileImage from '../../img/Ran-prof.png'; // استيراد صورة الملف الشخصي
 
 const TopBar = () => {
-    // Effect hook to dynamically load Ionicons for icons
+    const navigate = useNavigate();
+    const [profilePic, setProfilePic] = useState(profileImage); // تعيين صورة الملف الشخصي الافتراضية
+
     useEffect(() => {
-        // Create and append script for modern browsers
+        // تحميل صورة الملف الشخصي من localStorage إذا كانت متاحة
+        const savedProfilePic = localStorage.getItem('profilePic');
+        if (savedProfilePic) {
+            setProfilePic(savedProfilePic);
+        } 
+        // لا حاجة لتعيين صورة افتراضية هنا لأننا نقوم بتعيين profileImage مسبقًا
+
+        // تحميل مكتبة أيقونات Ionicons
         const script = document.createElement('script');
         script.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
         script.type = 'module';
-        document.body.appendChild(script); // Append the script to the body
+        document.body.appendChild(script);
 
-        // Create and append script for legacy browsers
         const scriptNoModule = document.createElement('script');
         scriptNoModule.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js';
-        scriptNoModule.setAttribute('nomodule', ''); // Add nomodule attribute for older browsers
-        document.body.appendChild(scriptNoModule); // Append the nomodule script
+        scriptNoModule.setAttribute('nomodule', '');
+        document.body.appendChild(scriptNoModule);
 
-        // Cleanup function to remove scripts when component unmounts
+        // تنظيف التحميل عند إلغاء تركيب المكون
         return () => {
-            document.body.removeChild(script); // Remove modern browser script
-            document.body.removeChild(scriptNoModule); // Remove legacy browser script
+            document.body.removeChild(script);
+            document.body.removeChild(scriptNoModule);
         };
-    }, []); // This effect runs once when the component mounts
+    }, []);
+
+    // دالة للتوجيه إلى صفحة الإعدادات
+    const goToProfileSettings = () => {
+        navigate('/profile');
+    };
 
     return (
-        <div className="topbar"> {/* Top bar container */}
-            <div className="topbar-search"> {/* Search input container */}
+        <div className="topbar">
+            <div className="topbar-search">
                 <label>
-                    <input type="text" placeholder="Search..." /> {/* Search input */}
-                    <ion-icon name="search-outline"></ion-icon> {/* Search icon */}
+                    <input type="text" placeholder="Search..." />
+                    <ion-icon name="search-outline"></ion-icon>
                 </label>
             </div>
 
-            <div className="topbar-right"> {/* Right section for notifications and profile */}
-                <div className="topbarnotification-icon"> {/* Notification icon */}
-                    <ion-icon name="notifications-outline"></ion-icon> {/* Notification icon */}
+            <div className="topbar-right">
+                <div className="topbarnotification-icon">
+                    <ion-icon name="notifications-outline"></ion-icon>
                 </div>
-                <div className="topbar-profile"> {/* Profile image container */}
-                    <img src={profileImage} alt="Profile" /> {/* Profile image */}
+                <div className="topbar-profile" onClick={goToProfileSettings} style={{ cursor: 'pointer' }}>
+                    <img 
+                        src={profilePic} 
+                        alt="Profile" 
+                        style={{ borderRadius: '50%', width: '40px', height: '40px' }} // تنسيق الصورة
+                    />
                 </div>
             </div>
         </div>
     );
 };
 
-export default TopBar; // Export the TopBar component for use in other parts of the app
+export default TopBar;

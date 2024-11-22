@@ -34,12 +34,14 @@ const DateNavigation = () => {
 
   useEffect(() => {
     if (currentDayRef.current && dateBarRef.current) {
-      // يحرك الشريط إلى اليوم الحالي عند تحميل الصفحة
-      const { offsetLeft, offsetWidth } = currentDayRef.current;
-      const dateBarWidth = dateBarRef.current.offsetWidth;
-      dateBarRef.current.scrollLeft = offsetLeft - (dateBarWidth / 2) + (offsetWidth / 2);
+      // استخدام scrollIntoView لضبط اليوم الحالي في المنتصف
+      currentDayRef.current.scrollIntoView({
+        behavior: "smooth", // التمرير السلس
+        block: "center", // التمرير إلى المنتصف
+        inline: "center" // التمرير إلى المنتصف أفقيًا
+      });
     }
-  }, [daysOfMonth, currentDay]);
+  }, [currentDay]);
 
   const handleDayClick = (day) => {
     setSelectedDay(day);

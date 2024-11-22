@@ -1,103 +1,165 @@
-// Dashboard.js
-
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
-// Import images
 import img22 from '../img/22.png';
 import img33 from '../img/33.png';
 import taskPlan from '../img/task_plan.png';
 import Slider from './Slider';
 
-// Mock function to simulate fetching notifications
-const fetchNotifications = () => {
-  return [
-    {
-      id: 1,
-      text: "Biometric Course Registration Pending",
-      time: "May 13, 09:00 AM",
-    },
-    {
-      id: 2,
-      text: "Biometric Check-in for CS 162",
-      time: "May 16, 08:00 AM",
-    },
-  ];
-};
-
-// Mock function to simulate fetching recent activities
-const fetchRecentActivities = () => {
-  return [
-    {
-      id: 1,
-      text: "Log in to work",
-      time: "Today, 10:30 AM",
-    },
-    {
-      id: 2,
-      text: "Log out from work",
-      time: "Today, 10:00 AM",
-    },
-    {
-      id: 3,
-      text: "Requested Leave for Circuit Theory",
-      time: "Yesterday, 01:00 PM",
-    },
-  ];
-};
-
-// Reusable Widget component
+// Widget component
 const Widget = ({ title, content, image, linkTo }) => {
-  const WidgetContent = (
+  return (
     <div className="widget">
-      <h2>{title}</h2>
-      {image && <img src={image} alt={`${title} icon`} />}
-      <p>{content}</p>
+      <div className="widget-header">
+        <img src={image} alt={title} className="widget-image" />
+        <h3 className="widget-title">{title}</h3>
+      </div>
+      <p className="widget-content">{content}</p>
+      {linkTo && <Link to={linkTo} className="widget-link">View More</Link>}
     </div>
   );
-
-  return linkTo ? (
-    <Link to={linkTo} className="widget-link" aria-label={title}>
-      {WidgetContent}
-    </Link>
-  ) : (
-    WidgetContent
-  );
 };
 
+// Dashboard component
 const Dashboard = () => {
-  const [userRole, setUserRole] = useState('Admin'); // تم إضافة userRole هنا
+  const [userRole, setUserRole] = useState('Employee');
   const [currentTime, setCurrentTime] = useState('');
-  const [notifications, setNotifications] = useState([]);
+  const [alerts, setAlerts] = useState([]);
   const [recentActivities, setRecentActivities] = useState([]);
-
-  // Admin specific states
+  const [events, setEvents] = useState([]);
   const [eventTitle, setEventTitle] = useState('');
   const [eventDescription, setEventDescription] = useState('');
-  const [eventImage, setEventImage] = useState(null);
   const [alertTitle, setAlertTitle] = useState('');
   const [alertDescription, setAlertDescription] = useState('');
 
   useEffect(() => {
     const now = new Date();
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     setCurrentTime(now.toLocaleDateString(undefined, options));
 
-    // Fetch notifications and recent activities when the component mounts
-    const fetchedNotifications = fetchNotifications();
-    setNotifications(fetchedNotifications);
+    // Fetch events from API
+    const fetchEvents = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+          console.error('No token found');
+          return;
+        }
 
-    const fetchedActivities = fetchRecentActivities();
-    setRecentActivities(fetchedActivities);
+        const response = await axios.get('/api/events/list/', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setEvents(response.data.results || []);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
+    // Fetch alerts from API
+    const fetchAlertsFromAPI = async () => {
+      try {
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+          console.error('No token found');
+          return;
+        }
+
+        const response = await axios.get('/api/notifications/list/', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        // Ensure that the alerts are always an array, even if the response data is empty
+        setAlerts(Array.isArray(response.data) ? response.data : []);
+      } catch (error) {
+        console.error('Error fetching alerts:', error);
+        // Fallback to dummy data if the fetch fails
+        setAlerts(fetchAlerts());
+      }
+    };
+
+    fetchEvents();
+    fetchAlertsFromAPI();
+    setRecentActivities(fetchRecentActivities()); // Dummy data for recent activities
   }, []);
 
-  // Employee Dashboard section
+  const handleEventSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const newEvent = { event_title: eventTitle, description: eventDescription };
+      const token = localStorage.getItem('accessToken');
+
+      if (!token) {
+        alert('You must be logged in to add events');
+        return;
+      }
+
+      const response = await axios.post('/api/events/create/', newEvent, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      alert('Event added successfully!');
+      setEvents([response.data, ...events]);
+      setEventTitle('');
+      setEventDescription('');
+    } catch (error) {
+      console.error('Error adding event:', error);
+      if (error.response?.status === 401) {
+        alert('Unauthorized: Please log in or check your credentials.');
+      } else {
+        alert('Failed to add event. Please try again.');
+      }
+    }
+  };
+
+  const handleAlertSubmit = async (e) => {
+    e.preventDefault();
+    if (!alertTitle || !alertDescription) {
+      alert('Please enter an alert title and description.');
+      return;
+    }
+
+    const newAlert = {
+      title: alertTitle,
+      message: alertDescription,
+    };
+
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        alert('You must be logged in to send alerts');
+        return;
+      }
+
+      const response = await axios.post('/api/notifications/create/', newAlert, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert('Notification sent successfully!');
+      setAlerts([...alerts, response.data]);
+      setAlertTitle('');
+      setAlertDescription('');
+    } catch (error) {
+      console.error('Error sending notification:', error);
+      if (error.response?.status === 401) {
+        alert('Unauthorized: Please log in or check your credentials.');
+      } else {
+        alert('Failed to send notification. Please try again.');
+      }
+    }
+  };
+
+  const fetchAlerts = () => [
+    { id: 1, text: "Biometric Course Registration Pending", time: "May 13, 09:00 AM" },
+    { id: 2, text: "Biometric Check-in for CS 162", time: "May 16, 08:00 AM" },
+  ];
+
+  const fetchRecentActivities = () => [
+    { id: 1, text: "Log in to work", time: "Today, 10:30 AM" },
+    { id: 2, text: "Log out from work", time: "Today, 10:00 AM" },
+    { id: 3, text: "Requested Leave for Circuit Theory", time: "Yesterday, 01:00 PM" },
+  ];
+
   if (userRole === 'Employee') {
     return (
       <div className="employdashboard-container">
@@ -108,7 +170,11 @@ const Dashboard = () => {
 
         <div className="employdashboard-content">
           <div className="employdashboard-left">
-            <Widget title="Total Courses" content="11 Approved" image={img22} />
+            <Widget
+              title="Total Courses"
+              content={events.length > 0 ? events[0].event_title : "No Events Available"}
+              image={img22}
+            />
             <Widget title="Task" content="5 Pending" image={taskPlan} linkTo="/task" />
             <Widget title="Professional Test" content="2 Scheduled" image={img33} />
             <div className="employdashboard-widget-slider-container">
@@ -136,15 +202,19 @@ const Dashboard = () => {
 
             <div className="employdashboard-alerts-section">
               <h2>Alerts</h2>
-              {notifications.map(notification => (
-                <div key={notification.id} className="employdashboard-alert-item">
-                  <span className="employdashboard-alert-icon">⚠️</span>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <p className="employdashboard-alerts-text">{notification.text}</p>
-                    <p className="employdashboard-alert-time">{notification.time}</p>
+              {alerts.length === 0 ? (
+                <p>No alerts available.</p>
+              ) : (
+                alerts.map(alert => (
+                  <div key={alert.id} className="employdashboard-alert-item">
+                    <span className="employdashboard-alert-icon">⚠️</span>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <p className="employdashboard-alerts-text">{alert.message || alert.title}</p>
+                      <p className="employdashboard-alert-time">{new Date(alert.created_at).toLocaleString()}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -152,43 +222,10 @@ const Dashboard = () => {
     );
   }
 
-  // Admin Dashboard section
   if (userRole === 'Admin') {
-    // Handle event image upload
-    const handleEventImageUpload = (e) => setEventImage(e.target.files[0]);
-
-    // Handle event form submission
-    const handleEventSubmit = (e) => {
-      e.preventDefault();
-      setEventTitle('');
-      setEventDescription('');
-      setEventImage(null);
-      alert('Event added successfully!');
-    };
-
-    // Handle alert form submission
-    const handleAlertSubmit = (e) => {
-      e.preventDefault();
-      if (!alertTitle || !alertDescription) {
-        alert('Please enter an alert title and description.');
-        return;
-      }
-
-      const newAlert = {
-        title: alertTitle,
-        description: alertDescription,
-        time: new Date().toLocaleString(),
-      };
-
-      console.log('Alert sent:', newAlert);
-      alert('Alert sent successfully!');
-      setAlertTitle('');
-      setAlertDescription('');
-    };
-
     return (
       <div className="admin-dashboard-container">
-        <div className='event-admin-dashboard'>
+        <div className="event-admin-dashboard">
           <h2>Add Event</h2>
           <form onSubmit={handleEventSubmit} className="admin-form">
             <input
@@ -204,7 +241,6 @@ const Dashboard = () => {
               onChange={(e) => setEventDescription(e.target.value)}
               required
             />
-            <input type="file" onChange={handleEventImageUpload} />
             <button type="submit">Add Event</button>
           </form>
         </div>
@@ -220,7 +256,6 @@ const Dashboard = () => {
               required
             />
             <textarea
-              className="alert-textarea"
               placeholder="Alert Description"
               value={alertDescription}
               onChange={(e) => setAlertDescription(e.target.value)}
@@ -233,7 +268,7 @@ const Dashboard = () => {
     );
   }
 
-  return <div><h2>Access Denied</h2></div>;
+  return <div>Loading...</div>;
 };
 
 export default Dashboard;

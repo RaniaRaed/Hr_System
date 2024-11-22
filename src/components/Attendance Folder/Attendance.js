@@ -10,9 +10,9 @@ import { getAllAttendanceForAdmin, getMonthlyAttendanceForEmployee } from './att
 import './Attendance.css';
 
 const Attendance = () => {
-  const [userRole, setUserRole] = useState('Employee'); 
+  const [userRole, setUserRole] = useState('Admin'); 
   const [attendanceData, setAttendanceData] = useState({
-    attendancePercentage: 75,
+    attendancePercentage: 95,
     absentPercentage: 25,
   });
   const [records, setRecords] = useState([]);
